@@ -1,0 +1,4 @@
+# create 
+
+docker build -t sphinx .
+docker tag sphinx pschaus/sphinx
