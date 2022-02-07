@@ -1,0 +1,192 @@
+
+
+
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>4. Linear Programming &#8212; LINFO2266 2021-2022 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bizstyle.css" />
+    <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/bizstyle.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. Lagrangian Relaxation" href="../lagrangian/index.html" />
+    <link rel="prev" title="3. Branch and Bound" href="../bandb/index.html" />
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-126664504-1']);
+  _gaq.push(['_trackPageview']);
+</script>
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../lagrangian/index.html" title="5. Lagrangian Relaxation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../bandb/index.html" title="3. Branch and Bound"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">LINFO2266 2021-2022 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">4. </span>Linear Programming</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="linear-programming">
+<span id="lp"></span><h1><span class="section-number">4. </span>Linear Programming<a class="headerlink" href="#linear-programming" title="Permalink to this headline">¶</a></h1>
+<section id="theory">
+<h2><span class="section-number">4.1. </span>Theory<a class="headerlink" href="#theory" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://youtube.com/playlist?list=PLq6RpCDkJMyoSSeucDx7FyUpMDjhc-Kyf">Videos</a></p></li>
+<li><p><a class="reference external" href="https://www.icloud.com/keynote/0Tu8miHL9lE61RhouiWizTIJQ#03-linear-programming">Slides</a></p></li>
+</ul>
+</section>
+<section id="exercises">
+<h2><span class="section-number">4.2. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<section id="finding-a-basic-feasible-solution-and-pivoting">
+<h3><span class="section-number">4.2.1. </span>Finding a basic feasible solution and pivoting<a class="headerlink" href="#finding-a-basic-feasible-solution-and-pivoting" title="Permalink to this headline">¶</a></h3>
+<p>Given the following linear program:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\min \quad &amp; 2 x_1 + 3 x_2 \\
+\text{subject to} \quad &amp; x_3 = 2 + x_1 - x_2 \\
+&amp; x_4 = -3 + 2x_1 + 3x_2 \\
+&amp; x_1, x_2, x_3, x_4 \ge 0\end{split}\]</div>
+<ol class="arabic simple">
+<li><p>Find a <em>basic feasible solution</em> (BFS) to initialize the simplex algorithm. Is it trivial to find it or do you need to create and solve the auxiliary problem?</p></li>
+<li><p>Find the optimal solution of the problem.</p></li>
+</ol>
+</section>
+<section id="standard-slack-forms-and-pivoting">
+<h3><span class="section-number">4.2.2. </span>Standard, slack forms and pivoting<a class="headerlink" href="#standard-slack-forms-and-pivoting" title="Permalink to this headline">¶</a></h3>
+<p>Given the following linear program:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\max \quad &amp; x_1 + 3 x_2 \\
+\text{subject to} \quad &amp; x_1 - x_2 \le 8 \\
+&amp; x_1 + x_2 \ge 3 \\
+&amp; -x_1 + 4x_2 = 2 \\
+&amp; x_1 \ge 0\end{split}\]</div>
+<ol class="arabic simple">
+<li><p>Transform it in <em>standard form</em> (only <span class="math notranslate nohighlight">\(\le\)</span> inequalities and all variables must have a positivity constraint).</p></li>
+<li><p>Transform the standard form of the problem in <em>slack form</em> (only equalities and all variables must have a positivity constraint).</p></li>
+<li><p>Find a BFS to initialize the simplex algorithm. Is it trivial to find it or do you need to create and solve the auxiliary problem?</p></li>
+<li><p>Find the optimal solution of the problem.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are training yourself on other linear programs, it is always useful to verify your solution with online solvers like <a class="reference external" href="https://linprog.com/en/main-simplex-method">this one</a> which provide all the steps to reach the solution.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/lsinf1121.jpg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">4. Linear Programming</a><ul>
+<li><a class="reference internal" href="#theory">4.1. Theory</a></li>
+<li><a class="reference internal" href="#exercises">4.2. Exercises</a><ul>
+<li><a class="reference internal" href="#finding-a-basic-feasible-solution-and-pivoting">4.2.1. Finding a basic feasible solution and pivoting</a></li>
+<li><a class="reference internal" href="#standard-slack-forms-and-pivoting">4.2.2. Standard, slack forms and pivoting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../bandb/index.html"
+                        title="previous chapter"><span class="section-number">3. </span>Branch and Bound</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../lagrangian/index.html"
+                        title="next chapter"><span class="section-number">5. </span>Lagrangian Relaxation</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/lp/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../lagrangian/index.html" title="5. Lagrangian Relaxation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../bandb/index.html" title="3. Branch and Bound"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">LINFO2266 2021-2022 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">4. </span>Linear Programming</a></li> 
+      </ul>
+    </div>
+
+    <div class="footer" role="contentinfo">
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+    </div>
+<div class="footer">
+    <script type="text/javascript">
+  (function() {
+    var ga = document.createElement('script');
+    ga.src = ('https:' == document.location.protocol ?
+              'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    ga.setAttribute('async', 'true');
+    document.documentElement.firstChild.appendChild(ga);
+  })();
+</script>
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />Authors: Pierre Schaus & Guillaume Derval. This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+</div>
+
+  </body>
+</html>

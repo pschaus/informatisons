@@ -1,0 +1,197 @@
+
+
+
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>9. Network Flows &#8212; LINFO2266 2021-2022 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bizstyle.css" />
+    <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/bizstyle.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="10. Bi-Objective and Benchmarking Optimization Algorithms" href="../biobj/index.html" />
+    <link rel="prev" title="8. LS" href="../ls/index.html" />
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-126664504-1']);
+  _gaq.push(['_trackPageview']);
+</script>
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../biobj/index.html" title="10. Bi-Objective and Benchmarking Optimization Algorithms"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../ls/index.html" title="8. LS"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">LINFO2266 2021-2022 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">9. </span>Network Flows</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="network-flows">
+<span id="flows"></span><h1><span class="section-number">9. </span>Network Flows<a class="headerlink" href="#network-flows" title="Permalink to this headline">¶</a></h1>
+<section id="theory">
+<h2><span class="section-number">9.1. </span>Theory<a class="headerlink" href="#theory" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://youtube.com/playlist?list=PLq6RpCDkJMyr5nx6tY1MVm-i7Pn9JcCM1">Videos</a></p></li>
+<li><p><a class="reference external" href="https://www.icloud.com/keynote/0t_dCJiKbYTXbaevE-bU96rmg#09-flows">Slides</a></p></li>
+</ul>
+<p>An elegant implementation of the max flow problem <a class="reference external" href="https://algs4.cs.princeton.edu/64maxflow/">Algorithms</a>.</p>
+</section>
+<section id="exercises">
+<h2><span class="section-number">9.2. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<section id="maximum-flow-ford-fulkerson-algorithm">
+<h3><span class="section-number">9.2.1. </span>Maximum Flow: Ford-Fulkerson Algorithm<a class="headerlink" href="#maximum-flow-ford-fulkerson-algorithm" title="Permalink to this headline">¶</a></h3>
+<p>Given the network below:</p>
+<ol class="arabic simple">
+<li><p>Formulate the Maximum Flow problem as a linear program.</p></li>
+<li><p>Transform the network in order to have only one source and one sink but the same maximum flow.</p></li>
+<li><p>Apply the Ford-Fulkerson algorithm, using augmenting paths and residual graphs.</p></li>
+<li><p>Give the minimum cut associated to the final maximal flow you obtained.</p></li>
+<li><p>Illustrate the execution of the Ford-Fulkerson algorithm with scaling.</p></li>
+</ol>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/network1.png"><img alt="../_images/network1.png" src="../_images/network1.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-text">A network with multiple sources and sinks.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="maximum-flow-variants">
+<h3><span class="section-number">9.2.2. </span>Maximum Flow: Variants<a class="headerlink" href="#maximum-flow-variants" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Transform the maximum flow problem with exact node demands shown below in a maximum flow problem.</p></li>
+</ol>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="../_images/network2.png"><img alt="../_images/network2.png" src="../_images/network2.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-text">A network with node demands.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple" start="2">
+<li><p>Transform the maximum flow problem with minimum edge demands shown below in a maximum flow problem.</p></li>
+</ol>
+<figure class="align-default" id="id3">
+<a class="reference internal image-reference" href="../_images/network3.png"><img alt="../_images/network3.png" src="../_images/network3.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">A network with minimum edge demands.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/lsinf1121.jpg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">9. Network Flows</a><ul>
+<li><a class="reference internal" href="#theory">9.1. Theory</a></li>
+<li><a class="reference internal" href="#exercises">9.2. Exercises</a><ul>
+<li><a class="reference internal" href="#maximum-flow-ford-fulkerson-algorithm">9.2.1. Maximum Flow: Ford-Fulkerson Algorithm</a></li>
+<li><a class="reference internal" href="#maximum-flow-variants">9.2.2. Maximum Flow: Variants</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../ls/index.html"
+                        title="previous chapter"><span class="section-number">8. </span>LS</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../biobj/index.html"
+                        title="next chapter"><span class="section-number">10. </span>Bi-Objective and Benchmarking Optimization Algorithms</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/flows/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../biobj/index.html" title="10. Bi-Objective and Benchmarking Optimization Algorithms"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../ls/index.html" title="8. LS"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">LINFO2266 2021-2022 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">9. </span>Network Flows</a></li> 
+      </ul>
+    </div>
+
+    <div class="footer" role="contentinfo">
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+    </div>
+<div class="footer">
+    <script type="text/javascript">
+  (function() {
+    var ga = document.createElement('script');
+    ga.src = ('https:' == document.location.protocol ?
+              'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    ga.setAttribute('async', 'true');
+    document.documentElement.firstChild.appendChild(ga);
+  })();
+</script>
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />Authors: Pierre Schaus & Guillaume Derval. This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+</div>
+
+  </body>
+</html>

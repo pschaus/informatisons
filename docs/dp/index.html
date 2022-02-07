@@ -1,0 +1,244 @@
+
+
+
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>2. Dynamic Programming &#8212; LINFO2266 2021-2022 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bizstyle.css" />
+    <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/bizstyle.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. Branch and Bound" href="../bandb/index.html" />
+    <link rel="prev" title="1. Organization" href="../intro/index.html" />
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-126664504-1']);
+  _gaq.push(['_trackPageview']);
+</script>
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../bandb/index.html" title="3. Branch and Bound"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../intro/index.html" title="1. Organization"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">LINFO2266 2021-2022 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">2. </span>Dynamic Programming</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="dynamic-programming">
+<span id="dp"></span><h1><span class="section-number">2. </span>Dynamic Programming<a class="headerlink" href="#dynamic-programming" title="Permalink to this headline">¶</a></h1>
+<section id="theory">
+<h2><span class="section-number">2.1. </span>Theory<a class="headerlink" href="#theory" title="Permalink to this headline">¶</a></h2>
+<p>Slides and video (keynote)</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://youtube.com/playlist?list=PLq6RpCDkJMyr-4iiykzoz6nMb0gEI4tjR">Videos</a></p></li>
+<li><p><a class="reference external" href="https://www.icloud.com/keynote/0rC8e10kIxOdGdN5QlIe6ASpw#01-dynamic-programming">Slides</a></p></li>
+</ul>
+</section>
+<section id="exercises">
+<h2><span class="section-number">2.2. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<section id="longest-path-in-a-directed-acyclic-graph">
+<h3><span class="section-number">2.2.1. </span>Longest-Path in a Directed Acyclic Graph<a class="headerlink" href="#longest-path-in-a-directed-acyclic-graph" title="Permalink to this headline">¶</a></h3>
+<p>A <em>directed acyclic graph</em> (DAG) is a graph with directed edges (one way) which has no cycles.
+The figure below shows a DAG representing a set of tasks.
+Each of them has a duration and depends on other tasks which have to be completed before the task can be started.
+The longest path of this graph is called the <strong>critical path</strong> because it determines the total time needed to complete all tasks while respecting all dependencies.</p>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="../_images/Pert_chart_colored.svg"><img alt="../_images/Pert_chart_colored.svg" src="../_images/Pert_chart_colored.svg" width="400px" /></a>
+<figcaption>
+<p><span class="caption-text">A PERT chart, a real-life application of DAGs. From <a class="reference external" href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">Wikipedia</a>.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>Given a set of vertices <span class="math notranslate nohighlight">\(V = \{1,\ldots,n\}\)</span> and set of weighted edges <span class="math notranslate nohighlight">\(E\)</span> where <span class="math notranslate nohighlight">\((i,j,w) \in E\)</span> if vertex <span class="math notranslate nohighlight">\(i\)</span> has an edge to vertex <span class="math notranslate nohighlight">\(j\)</span> of weight <span class="math notranslate nohighlight">\(w\)</span>.
+You are asked to find the longest path connecting <span class="math notranslate nohighlight">\(s\)</span> to <span class="math notranslate nohighlight">\(t\)</span>, with <span class="math notranslate nohighlight">\(s,t \in V\)</span> and provided that at least one such path exists.</p>
+<ol class="arabic simple">
+<li><p>Find a dynamic programming model for this problem and formulate the Bellman recurrence equations.</p></li>
+<li><p>What is the time and space complexity of an algorithm computing these recurrence equations?</p></li>
+<li><p>What do you need to change to solve the shortest-path problem on a DAG?</p></li>
+</ol>
+</section>
+<section id="longest-increasing-subsequence">
+<h3><span class="section-number">2.2.2. </span>Longest Increasing Subsequence<a class="headerlink" href="#longest-increasing-subsequence" title="Permalink to this headline">¶</a></h3>
+<p>Given a sequence of integers, the problem asks to find the longest (strictly) increasing subsequence.
+A <em>subsequence</em> is a subset of the elements of a sequence and appearing in the same order.</p>
+<p>Below is a sequence of integers with a longest increasing subsequence in bold:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>0</strong></p></td>
+<td><p>8</p></td>
+<td><p>4</p></td>
+<td><p>12</p></td>
+<td><p><strong>2</strong></p></td>
+<td><p>10</p></td>
+<td><p><strong>6</strong></p></td>
+<td><p>14</p></td>
+<td><p>1</p></td>
+<td><p><strong>9</strong></p></td>
+<td><p>5</p></td>
+<td><p><strong>13</strong></p></td>
+<td><p>3</p></td>
+<td><p>11</p></td>
+<td><p>7</p></td>
+<td><p><strong>15</strong></p></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple">
+<li><p>Find a dynamic programming model for this problem and formulate the Bellman recurrence equations.</p></li>
+<li><p>Write a pseudocode for your algorithm. What is its time and space complexity?</p></li>
+<li><p>Can you model your solution as a longest-path problem in a DAG?</p></li>
+<li><p>(Bonus) Implement and verify your algorithm on <a class="reference external" href="https://leetcode.com/problems/longest-increasing-subsequence/">LeetCode</a>.</p></li>
+</ol>
+</section>
+<section id="maximum-height-box-stacking">
+<h3><span class="section-number">2.2.3. </span>Maximum Height Box-Stacking<a class="headerlink" href="#maximum-height-box-stacking" title="Permalink to this headline">¶</a></h3>
+<p>You are given a set of boxes <span class="math notranslate nohighlight">\(B = \{(w_1,d_1,h_1),\ldots,(w_n,d_n,h_n)\}\)</span>, where <span class="math notranslate nohighlight">\(w_i,d_i,h_i\)</span> denote respectively the width, depth and height of a box.
+The goal is to use them to build the highest stack possible.</p>
+<p>Box <span class="math notranslate nohighlight">\(j\)</span> can be placed on top of box <span class="math notranslate nohighlight">\(i\)</span> if and only if <span class="math notranslate nohighlight">\(w_i \ge w_j \land d_i \ge d_j \land h_i \ge h_j\)</span>.
+In addition, <strong>the boxes can be rotated</strong> i.e. their dimensions can be permuted.</p>
+<ol class="arabic simple">
+<li><p>Find a dynamic programming model for this problem and formulate the Bellman recurrence equations. Do you need to adapt the problem input first?</p></li>
+<li><p>Write a pseudocode for your algorithm. What is its time and space complexity?</p></li>
+<li><p>(Bonus) Implement and verify your algorithm on <a class="reference external" href="https://leetcode.com/problems/maximum-height-by-stacking-cuboids/">LeetCode</a>.</p></li>
+</ol>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/lsinf1121.jpg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2. Dynamic Programming</a><ul>
+<li><a class="reference internal" href="#theory">2.1. Theory</a></li>
+<li><a class="reference internal" href="#exercises">2.2. Exercises</a><ul>
+<li><a class="reference internal" href="#longest-path-in-a-directed-acyclic-graph">2.2.1. Longest-Path in a Directed Acyclic Graph</a></li>
+<li><a class="reference internal" href="#longest-increasing-subsequence">2.2.2. Longest Increasing Subsequence</a></li>
+<li><a class="reference internal" href="#maximum-height-box-stacking">2.2.3. Maximum Height Box-Stacking</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../intro/index.html"
+                        title="previous chapter"><span class="section-number">1. </span>Organization</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../bandb/index.html"
+                        title="next chapter"><span class="section-number">3. </span>Branch and Bound</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/dp/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../bandb/index.html" title="3. Branch and Bound"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../intro/index.html" title="1. Organization"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">LINFO2266 2021-2022 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">2. </span>Dynamic Programming</a></li> 
+      </ul>
+    </div>
+
+    <div class="footer" role="contentinfo">
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+    </div>
+<div class="footer">
+    <script type="text/javascript">
+  (function() {
+    var ga = document.createElement('script');
+    ga.src = ('https:' == document.location.protocol ?
+              'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    ga.setAttribute('async', 'true');
+    document.documentElement.firstChild.appendChild(ga);
+  })();
+</script>
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />Authors: Pierre Schaus & Guillaume Derval. This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+</div>
+
+  </body>
+</html>

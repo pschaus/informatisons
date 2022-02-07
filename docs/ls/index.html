@@ -1,0 +1,267 @@
+
+
+
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>8. LS &#8212; LINFO2266 2021-2022 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bizstyle.css" />
+    <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/bizstyle.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="9. Network Flows" href="../flows/index.html" />
+    <link rel="prev" title="7. CP" href="../cp/index.html" />
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-126664504-1']);
+  _gaq.push(['_trackPageview']);
+</script>
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../flows/index.html" title="9. Network Flows"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../cp/index.html" title="7. CP"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">LINFO2266 2021-2022 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">8. </span>LS</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="ls">
+<span id="id1"></span><h1><span class="section-number">8. </span>LS<a class="headerlink" href="#ls" title="Permalink to this headline">¶</a></h1>
+<section id="theory">
+<h2><span class="section-number">8.1. </span>Theory<a class="headerlink" href="#theory" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Part1: LS CBLS solver and Sudoku <a class="reference external" href="https://youtube.com/playlist?list=PLq6RpCDkJMyrV3kOH5L2u7ZEjmLGWkZ_X">Videos</a></p></li>
+<li><p>Part2: LS TSP, Routing, Scheduling, VLNS <a class="reference external" href="https://youtube.com/playlist?list=PLq6RpCDkJMyr_lObjPgqYdh51PBB3GmX0">Videos</a></p></li>
+<li><p><a class="reference external" href="https://www.icloud.com/keynote/0X0mx27SJ79kODLuNqocALfvQ#06-local-search">Slides</a></p></li>
+</ul>
+<p>Read and understand the source code of package minils and the sudoku example on <a class="reference external" href="https://github.com/pschaus/linfo2266/tree/master/src/main/java/localsearch/minils">github</a>.</p>
+<ul class="simple">
+<li><p>Part 2: LS Routing Problems</p></li>
+</ul>
+</section>
+<section id="exercises">
+<h2><span class="section-number">8.2. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<section id="traveling-salesman-problem-2-opt">
+<h3><span class="section-number">8.2.1. </span>Traveling Salesman Problem: 2-Opt<a class="headerlink" href="#traveling-salesman-problem-2-opt" title="Permalink to this headline">¶</a></h3>
+<p>You are given a suboptimal solution: [1,2,3,4,5] (list of the visited nodes).
+If the optimal solution is [4,1,3,2,5], what is the minimal sequence of 2-Opt moves to reach the solution?</p>
+</section>
+<section id="vehicle-routing-problem-clark-wright-savings-algorithm">
+<h3><span class="section-number">8.2.2. </span>Vehicle Routing Problem: Clark-Wright Savings Algorithm<a class="headerlink" href="#vehicle-routing-problem-clark-wright-savings-algorithm" title="Permalink to this headline">¶</a></h3>
+<p>Given the following demands and distances between the depot and the customers, find an initial solution to the Vehicle Routing Problem with a <strong>maximum capacity of 50</strong> using the <a class="reference external" href="http://web.mit.edu/urban_or_book/www/book/chapter6/6.4.12.html">Clark-Wright Savings Algorithm</a>.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 44%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Customer</p></td>
+<td><p>1</p></td>
+<td><p>2</p></td>
+<td><p>3</p></td>
+<td><p>4</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>Demand</p></td>
+<td><p>15</p></td>
+<td><p>10</p></td>
+<td><p>15</p></td>
+<td><p>20</p></td>
+<td><p>30</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 38%" />
+<col style="width: 21%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Distances</p></td>
+<td><p>depot</p></td>
+<td><p>1</p></td>
+<td><p>2</p></td>
+<td><p>3</p></td>
+<td><p>4</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>depot</p></td>
+<td></td>
+<td><p>15</p></td>
+<td><p>10</p></td>
+<td><p>20</p></td>
+<td><p>10</p></td>
+<td><p>25</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td></td>
+<td></td>
+<td><p>5</p></td>
+<td><p>15</p></td>
+<td><p>15</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>25</p></td>
+<td><p>10</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>5</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>20</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/lsinf1121.jpg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">8. LS</a><ul>
+<li><a class="reference internal" href="#theory">8.1. Theory</a></li>
+<li><a class="reference internal" href="#exercises">8.2. Exercises</a><ul>
+<li><a class="reference internal" href="#traveling-salesman-problem-2-opt">8.2.1. Traveling Salesman Problem: 2-Opt</a></li>
+<li><a class="reference internal" href="#vehicle-routing-problem-clark-wright-savings-algorithm">8.2.2. Vehicle Routing Problem: Clark-Wright Savings Algorithm</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../cp/index.html"
+                        title="previous chapter"><span class="section-number">7. </span>CP</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../flows/index.html"
+                        title="next chapter"><span class="section-number">9. </span>Network Flows</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/ls/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../flows/index.html" title="9. Network Flows"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../cp/index.html" title="7. CP"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">LINFO2266 2021-2022 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">8. </span>LS</a></li> 
+      </ul>
+    </div>
+
+    <div class="footer" role="contentinfo">
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+    </div>
+<div class="footer">
+    <script type="text/javascript">
+  (function() {
+    var ga = document.createElement('script');
+    ga.src = ('https:' == document.location.protocol ?
+              'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    ga.setAttribute('async', 'true');
+    document.documentElement.firstChild.appendChild(ga);
+  })();
+</script>
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />Authors: Pierre Schaus & Guillaume Derval. This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+</div>
+
+  </body>
+</html>
