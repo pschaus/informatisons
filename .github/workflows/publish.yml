@@ -1,9 +1,6 @@
 name: Update html                
 
-on:
-  workflow_dispatch: {}
-  schedule:
-  - cron: "50 * * * *"
+on: push
 
 jobs:   
   build:
