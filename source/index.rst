@@ -13,7 +13,7 @@ Informatisons
    :maxdepth: 2
 
    intro/index
-   activity/index
+   activity1/index
 
 
 .. Indices and tables
