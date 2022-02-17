@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Lagrangian Relaxation &#8212; Informations 2021-2022 documentation</title>
+    <title>2. Création d’une horloge &#8212; Informations 2021-2022 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/bizstyle.css" />
     <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
@@ -17,11 +17,11 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/bizstyle.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="1. Organization" href="../intro/index.html" />
 
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <!--[if lt IE 9]>
@@ -40,8 +40,11 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../intro/index.html" title="1. Organization"
+             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Informations 2021-2022 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Lagrangian Relaxation</a></li> 
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">2. </span>Création d’une horloge</a></li> 
       </ul>
     </div>  
 
@@ -50,30 +53,23 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="lagrangian-relaxation">
-<span id="lagrangian"></span><h1>Lagrangian Relaxation<a class="headerlink" href="#lagrangian-relaxation" title="Permalink to this headline">¶</a></h1>
-<section id="theory">
-<h2>Theory<a class="headerlink" href="#theory" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://youtube.com/playlist?list=PLq6RpCDkJMyqeA5zIrSCy8tqWrJsWSZEf">Videos</a></p></li>
-<li><p><a class="reference external" href="https://www.icloud.com/keynote/0jWRWy6L1u-ztu8K4uLJSN8Yw#04-lagrangian-relaxation">Slides</a></p></li>
-</ul>
+  <section id="creation-d-une-horloge">
+<span id="activity1"></span><h1><span class="section-number">2. </span>Création d’une horloge<a class="headerlink" href="#creation-d-une-horloge" title="Permalink to this headline">¶</a></h1>
+<section id="objectif">
+<h2><span class="section-number">2.1. </span>Objectif<a class="headerlink" href="#objectif" title="Permalink to this headline">¶</a></h2>
+<p>Montrer l’heure à l’écran lorsque le microbit est secoué.</p>
 </section>
-<section id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<section id="set-covering-problem">
-<h3>Set Covering Problem<a class="headerlink" href="#set-covering-problem" title="Permalink to this headline">¶</a></h3>
-<p>Given <span class="math notranslate nohighlight">\(m\)</span> sets of integers, such that <span class="math notranslate nohighlight">\(\cup_{i=1}^m S_i = \{1,\ldots,n\}\)</span>, associated each with a cost <span class="math notranslate nohighlight">\(c_i\)</span>.
-The goal of the <em>set covering problem</em> is to find the sets covering the universe <span class="math notranslate nohighlight">\(U=\{1,\ldots,n\}\)</span> at minimum cost.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\min \quad &amp; \sum_{i=1}^m c_ix_i &amp; \\
-&amp; \sum_{\substack{i=1\\j \in S_i}}^m x_i \ge 1 \quad&amp; j=1,\ldots,n\\
-&amp; x_i \in \{0,1\} &amp; i=1,\ldots,m\end{split}\]</div>
-<ol class="arabic simple">
-<li><p>Give the Lagrangian relaxation formula.</p></li>
-<li><p>Given the sets <span class="math notranslate nohighlight">\(S_1 = \{1,2\}, S_2 = \{3\}, S_3 = \{1,3\}, S_4 = \{2,3\}\)</span> with <span class="math notranslate nohighlight">\(c_1=2, c_2=3, c_3=4, c_4=5\)</span>. What is the lower-bound for <span class="math notranslate nohighlight">\(\lambda_1 = 1.5, \lambda_2 = 1.6, \lambda_3 = 2.2\)</span>?</p></li>
-<li><p>Design a subgradient procedure to compute a lower-bound.</p></li>
-</ol>
+<section id="conseil">
+<h2><span class="section-number">2.2. </span>Conseil<a class="headerlink" href="#conseil" title="Permalink to this headline">¶</a></h2>
+<p>Le microbit ne contient pas d’horloge interne.
+Par contre il peut mesurer combien de temps s’est écoulé depuis qu’il est allumé.</p>
+<p>Nous aurons besoin de deux varaibles ‘heure’ et ‘minute’ pour mémorister les heures et les minutes.
+La variable minute devra être augmenter de 1 toutes les minutes …</p>
+<section id="solution">
+<h3><span class="section-number">2.2.1. </span>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://makecode.microbit.org/11193-48742-58774-90152">Solution</a></p></li>
+</ul>
 </section>
 </section>
 </section>
@@ -91,16 +87,21 @@ The goal of the <em>set covering problem</em> is to find the sets covering the u
   <div>
     <h3><a href="../index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">Lagrangian Relaxation</a><ul>
-<li><a class="reference internal" href="#theory">Theory</a></li>
-<li><a class="reference internal" href="#exercises">Exercises</a><ul>
-<li><a class="reference internal" href="#set-covering-problem">Set Covering Problem</a></li>
+<li><a class="reference internal" href="#">2. Création d’une horloge</a><ul>
+<li><a class="reference internal" href="#objectif">2.1. Objectif</a></li>
+<li><a class="reference internal" href="#conseil">2.2. Conseil</a><ul>
+<li><a class="reference internal" href="#solution">2.2.1. Solution</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../intro/index.html"
+                          title="previous chapter"><span class="section-number">1. </span>Organization</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -129,8 +130,11 @@ The goal of the <em>set covering problem</em> is to find the sets covering the u
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="../intro/index.html" title="1. Organization"
+             >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Informations 2021-2022 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Lagrangian Relaxation</a></li> 
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">2. </span>Création d’une horloge</a></li> 
       </ul>
     </div>
 
